@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>&lt;link&gt; 태그로 스타일 파일 불러오기</title>
+        <link type="text/css" rel="stylesheet" href="mystyle.css">
+    </head>
+    <h3>손연재</h3>
+    <hr>
+    <p>
+        저는 체조 선수 손연재입니다. 음악을 들으면서 책읽기를 좋아함. <br>
+        수고하세요wwww^^
+    </p>
+</html>
+
+
+
+/* mystyle.css */
+body{background-color: linen; color: blueviolet; margin-left: 30px; margin-right: 30px;}
+h3{text-align: center; color: darkcyan;}
