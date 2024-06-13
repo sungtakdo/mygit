@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>텍스트 그리기</title>
+    </head>
+    <body>
+        <h3>텍스트 그리기</h3>
+        <hr>
+        <canvas id="myCanvas" style="background-color: beige;" width="500" height="400"></canvas>
+        <script>
+            let canvas = document.getElementById("myCanvas");
+            let context = canvas.getContext("2d");
+            context.strokeStyle = "blue";
+
+            //for 프로퍼티로 다양한 크기와 서체 활용
+            for(let i = 0; i<4; i++) {
+                context.font = (10 + i*10) + "px forte";
+                context.strokeText("Javascript 재.밌.다.", 10, 30+i*50);
+            }
+
+            //텍스트 외곽선만 그리기
+            context.font = "italic 50px forte";
+            context.strokeStyle = "magenta";
+            context.lineWidth =3;
+            context.textAlign = "left";
+            context.strokeText("Javascript 재.밌.다.", 40,250);
+
+            //텍스트 채워 그리기
+            context.fillStyle = "green";
+            context.textAlign = "right";
+            context.fillText("Javascript 재.밌.다.",490,300);
+        </script>
+    </body>
+</html>
