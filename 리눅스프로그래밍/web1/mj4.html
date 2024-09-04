@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 익명함수선언 : 함수 이름이 없는 경우로 함수 자체가 식(expression)이 된다. (표현식)
+        // 사용방법  : function(){}
+        // function (a, b){
+        //     return a*b;
+        // }
+        // 익명함수 호출할 경우 변수에 결과를 저장
+        const mul = function(a,b){ 
+            return a*b;
+        }
+        result = mul(2, 3); // 6
+        console.log(result);
+
+        // 1. 화살표 함수 정의
+        const func3 = function (){
+            return value;
+        }
+        // 1. 콘솔 출력 "func3입니다."
+
+        // 2. 화살표 함수 정의
+
+        // 3. 
+
+        // 반환값이 여러행일 경우에는 ()로 감싼 후에 단위행과 같이 모아서 반환한다.
+        const func9 = (val1, val2) => ({
+            name : val1, 
+            age : val2
+        });
+
+        person = func9("팝콘", 24);
+        //console.log(func9("팝콘", 24));
+        console.log(person);
+        //팝콘님의 나이는 24세입니다.
+        message = `${person.name}님의 나이는 ${person.age}세 입니다.`;
+        console.log(message);
+
+        // const name = "팝콘";
+        // const age = 24;
+        // const message4 = `${name}님의 나이는 ${age}입니다.`;
+        // console.log(message4);
+
+    </script>
+</body>
+</html>

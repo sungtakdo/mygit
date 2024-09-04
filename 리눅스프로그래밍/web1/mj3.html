@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 자바스크립트 함수 정의(=선언) : 키워드 function 사용
+        // 2개의 매개변수를 받아서 결과를 출력하는 함수
+        // 함수 정의
+        function addNums(a, b){
+            console.log(a+b);
+        }
+        // 함수 호출
+        addNums(2, 3);  // 5출력
+
+        // 2개의 매개변수를 받아서 결과를 리턴하는 함수
+        function addNums2(a, b){
+            return a+b;
+        }
+
+        result = addNums(2, 3);
+        console.log(result); // 5출력
+
+        // 매개변수에 기본값 지정하기
+        function multiple(a, b=5, c=10){ //매개변수에 기본값을 지정하면 호출이 유연
+            return a*b+c;
+        }
+
+        //multiple 함수 호출
+        console.log(multiple(2, 3, 5)); // 11 
+        console.log(multiple(2, 3)); // 16 
+        console.log(multiple(2)); // 20 
+        console.log(multiple()); // a에 대응되는 값 xx, 연산을 할 수 없음.
+
+
+
+    </script>
+</body>
+</html>

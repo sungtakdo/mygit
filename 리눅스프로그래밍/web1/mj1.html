@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 자바스크립트의 변수 선언 키워드 : var
+        // var - 1. 변수 덮어쓰기 가능, 2. 변수 재선언 가능
+        var value1 = "var 변수 선언";
+        console.log(value1);
+
+        value1 = "var 변수 덮어쓰기 가능";
+        console.log(value1);
+
+        var value1 = '변수 재선언 가능';
+        console.log(value1);
+
+        // 자바스크립트의 변수 선언 키워드 : let
+        // 덮어쓰기 가능하지만, 재선언 불가능
+        // let value2 = 'let 변수 선언';
+        // console.log(value2);
+
+        // value2 = 'let 변수 덮어쓰기 가능';
+        // console.log(value2);
+
+        // let value3 = 'let 변수 재선언 불가능';
+        // console.log(value3);
+
+        // // 자바스크립트의 변수 선언 키워드 : const
+        // // 덮어쓰기 불가능, 재선언 불가능
+        // const value4 = 'const 변수 선언';
+        // console.log(value4);
+
+        // value4 = 'const 변수 덮어쓰기 불가능';
+        // console.log(value4);
+
+        // const value4 = '재선언 불가능';
+        // console.log(value4);
+
+        // const 정의 변수 : 기본형 데이터를 저장하는 변수, 객체형 저장하는 변수
+        // 기본형 데이터를 저장할 경우, 값 변경 불가능(숫자, 문자열, 논리형)
+
+        // 객체형 데이터를 저장할 경우, 값 변경 가능
+        // 딕셔너리 개체 정의
+        const obj1 = {
+            name: 'pop', age:  24
+        }
+
+        console.log(obj1);
+        console.log(obj1.name);
+        console.log(obj1.age);
+
+        // const 선언된 객체의 속성은 변경 가능한가?  YES
+        obj1.name = 'popcorn';
+        obj1.age = '28';
+        console.log(obj1.name);
+        console.log(obj1.age);
+
+        // const 선언된 객체의 속성 추가 가능한가?   YES
+        obj1.adr = 'seoul';
+        console.log(obj1);
+
+        // 배열 객체의 경우 예시
+        // 배열은 -> 동일한 자료형을 모아놓은 자료구조, 데이터 접근은 인덱스로 한다. 순차접근, for 반복문
+        const arr1 = ['cat','dog'];
+        console.log(arr1);
+        // 배열 데이터 접근 -> 인덱스 이용, 인덱스 시작 0
+        console.log(arr1[0]);
+        console.log(arr1[1]);
+        // 배열 데이터 수정이 가능한가?   YES
+        arr1[0] = 'bird';
+        console.log(arr1);
+        console.log(arr1[0]);
+        // 배열 데이터 추가 가능한가?   YES
+        arr1[2] = 'monkey';
+        console.log(arr1);
+    </script>
+</body>
+</html>

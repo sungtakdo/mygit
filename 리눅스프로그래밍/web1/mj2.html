@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES6 추가된 규정 : 템플릿 문자열 - 문자열 안에서 변수를 전개하기 위한 새로운 표기법
+        // 기존 문자열과 변수를 결합 : + 연산자 이용
+        // 템플릿 문자열 이용할 경우 , 문자열을 `(역따옴표)` 로 문자열 감사고, ${} 안에 자바스크립트를 입력하는 형식을 취함
+        
+        const name = '팝콘';
+        const age = 24;
+        // 내 이름은 팝콘입니다. 나이는 24세 입니다. 출력할 경우
+        // 기존 방법
+        const message = '내 이름은 ' + name + '입니다. 나이는 ' + age + '세 입니다.';
+        console.log(message);
+
+        // ES6 방법 ->` ${} ` 템플릿 문자열 이용
+        const message2 = `내 이름은 ${name}입니다. 나이는 ${age}세 입니다.`;
+        console.log(message2);
+
+        // 함수 정의, 함수 호출 결과와 템플릿 문자열 이용
+        function sayHello(){
+            return '안녕하세요!';
+        }
+        const month = 1;  // 1월
+        // 여러분, 안녕하세요! 지금은 8월 입니다. 템플릿 문자열 이용한 출력
+        const message3 = `여러분, ${sayHello()}, 지금은 ${month*8}월 입니다.`;
+        console.log(message3);
+        
+    </script>
+</body>
+</html>
