@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = 'root'></div>
+</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            var h1Ele = document.createElement('h1');
+            h1Ele.textContent = '첫 실습 - DOM 제어 프로그램';
+            var divId = document.getElementById('root');
+            divId.appendChild(h1Ele);
+            
+            var pEle = document.createElement('p'); 
+            pEle.textContent = '자바스크립트로 DOM 제어는 재미있습니다.';  
+            var divId = document.getElementById('root')
+            divId.appendChild(pEle);
+        })
+    </script>
+</html>
