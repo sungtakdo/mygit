@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 사용자 입력 자료형 판단해서 결과 출력
+        let val2 = 10;
+        console.log(typeof val2)
+        val2 ='10';
+        console.log(typeof val2)
+
+        const result2 = (num)=> {
+            const result = typeof num === "number"?
+            num.toLocaleString():
+            "숫자 입력하세요"
+            return result
+        }
+        console.log(result2(1234))
+        console.log(result2("1234"))
+
+        // 두 인수의 합이 100이 넘는지 판정하는 함수
+        const checkSumOver100 = (num1, num2) => {
+            return num1 + num2 > 100 ? "100을 넘었습니다." :
+            "허용범위 안입니다."
+        }
+        //허용범위 안입니다.
+        console.log(checkSumOver100(50, 40));
+        //100을 넘었습니다.
+        console.log(checkSumOver100(50, 70));
+
+        // 논리연산자 &&, ||
+        // || -> 왼쪽이 False이면, 오른쪽 문장을 반환
+        const flag1 = true
+        const flag2 = false
+        if(flag1 || flag2)
+            console.log("두 플래그 중 하나는 true 입니다.")
+
+        if(flag1 && flag2)
+            console.log("두 플래그 중 하나는 true 입니다.")
+        
+        // null, undefined, 0 모두가 false 처리가 된다.
+        const num3 = null;
+        const fee = num3 || alert("금액이 설정되지 않았습니다.")
+        console.log(fee)
+
+        const num4 = 100;
+        const fee2 = num4 || "금액이 설정되지 않았습니다."
+        console.log(fee2)
+
+        // %% -> 왼쪽이 True이면, 오른쪽 문장을 반환
+        const num5 = 100;
+        const fee3 = num5 && "무언가 설정되었습니다."
+        console.log(fee3)
+    </script>
+</body>
+</html>
