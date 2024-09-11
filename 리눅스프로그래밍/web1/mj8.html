@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 배열의 map()함수 사용하기 : 매개변수 value, index, array
+        // 1. 배열 요소의 값(value)에 2배를 리턴한 배열 만들기
+        const arr = [1,2,3,4,5]
+        const arr1 = []
+        for(i=0; i<arr.length; i++){
+            arr1[i] = arr[i] * 2;
+        }
+        console.log(arr1);
+        const arr2 = arr.map((x) => { return x*2; })
+        console.log(arr2);
+
+        // 객체배열에 map()함수 적용
+        const users = [
+            {id: 1, name: "홍길동"},
+            {id: 2, name: "강감찬"},
+            {id: 3, name: "이순신"}
+        ]
+        // users 객체배열로부터 이름만 가져오기
+        const names = users.map((user) => { return user.name })
+        console.log(names);
+
+        //배열요소에 대하여 짝수, 홀수를 명시한 배열을 만들기
+        const numbers = [1,2,3,4,5]
+        const numbersArr = numbers.map((num) => {
+            if(num%2 == 0) return "Even"
+            else return "Odd"
+        })
+        console.log(numbersArr);
+
+        const nameArr = ["홍길동", "이순신", "강감찬"]
+        for(i=0; i<nameArr.length; i++){
+            console.log(`${i+1}번째 손님: ${nameArr[i]}`)
+        }
+        console.log("==================");
+        nameArr.map((value, i) => {
+            console.log(`${i+1}번째 손님: ${nameArr[i]}`)
+        })
+
+        // map()함수를 활용하여 다음 배열에서
+        // 실습1. Users 배열에서 score만 뽑아서 새로운 배열 만들기
+        // 실습2. Users 배열에서 60점 이상인 학생의 명단 배열을 만드시오.
+        const Users = [
+            { name: "홍길동", score: 88 },
+            { name: "강감찬", score: 90 },
+            { name: "이순신", score: 55 },
+            { name: "황미나", score: 75 },
+            { name: "길동이", score: 92 },
+            { name: "정철", score: 35 },
+        ];
+
+        // 1. 
+        const scoreArr = Users.map((x) => {return x.score})
+        console.log(scoreArr);
+
+        // 2. 
+        const scoreArr2 = Users.map((value) => {
+            if(value.score >= 60) return value.name
+            else return null
+        })
+        console.log(scoreArr2);
+        for(i=0; i < scoreArr2.length; i++){
+            if(scoreArr2[i] != null){
+                console.log(Users[i])
+            }
+        }
+        ///////////////////////////////////////////////////////////////////////////
+        const scoreArr3 = Users.filter((x)=>{
+            if (x.score >= 60) return x.name
+        })
+        console.log(scoreArr3);
+        //////////////////////////////////////////////////////////////////////////
+        const result = Users.filter((x)=>{
+            return x.score >= 60
+        })
+        console.log(result);
+        const passNames = result.map((x)=>{
+            return x.name
+        })
+        console.log(passNames);
+
+
+        // 배열의 filter()함수: 조건식에 만족하는 값만 모아서 배열로 리턴하는 함수
+        // 주어진 배열에서 홀수만 추출하기
+        const numArr = [1,2,3,4,5,6]
+        const numOdd = numArr.filter((x)=>{
+            return x % 2 == 1;
+        })
+        console.log(numOdd);
+    </script>
+</body>
+</html>
