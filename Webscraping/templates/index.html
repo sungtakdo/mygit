@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리그별 팀 순위</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .card {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .card h2 {
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8em;  /* 표 크기 추가로 줄이기 */
+        }
+        th, td {
+            padding: 6px;  /* 패딩 줄이기 */
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;  /* 헤더 배경색 제거 */
+            color: #333;  /* 헤더 글자색 제거 */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>리그별 팀 순위</h1>
+
+        <div class="card">
+            <h2>프리미어리그 (잉글랜드)</h2>
+            <table>
+                <tr>
+                    <th>순위</th>
+                    <th>팀</th>
+                    <th>경기수</th>
+                    <th>승점</th>
+                </tr>
+                {% for team in teams1 %}
+                <tr>
+                    <td>{{ team.rank }}</td>
+                    <td>{{ team.team_name }}</td>
+                    <td>{{ team.games_played }}</td>
+                    <td>{{ team.points }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>라리가 (스페인)</h2>
+            <table>
+                <tr>
+                    <th>순위</th>
+                    <th>팀</th>
+                    <th>경기수</th>
+                    <th>승점</th>
+                </tr>
+                {% for team in teams2 %}
+                <tr>
+                    <td>{{ team.rank }}</td>
+                    <td>{{ team.team_name }}</td>
+                    <td>{{ team.games_played }}</td>
+                    <td>{{ team.points }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>분데스리가 (독일)</h2>
+            <table>
+                <tr>
+                    <th>순위</th>
+                    <th>팀</th>
+                    <th>경기수</th>
+                    <th>승점</th>
+                </tr>
+                {% for team in teams3 %}
+                <tr>
+                    <td>{{ team.rank }}</td>
+                    <td>{{ team.team_name }}</td>
+                    <td>{{ team.games_played }}</td>
+                    <td>{{ team.points }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>세리에 A (이탈리아)</h2>
+            <table>
+                <tr>
+                    <th>순위</th>
+                    <th>팀</th>
+                    <th>경기수</th>
+                    <th>승점</th>
+                </tr>
+                {% for team in teams4 %}
+                <tr>
+                    <td>{{ team.rank }}</td>
+                    <td>{{ team.team_name }}</td>
+                    <td>{{ team.games_played }}</td>
+                    <td>{{ team.points }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>리그 1 (프랑스)</h2>
+            <table>
+                <tr>
+                    <th>순위</th>
+                    <th>팀</th>
+                    <th>경기수</th>
+                    <th>승점</th>
+                </tr>
+                {% for team in teams5 %}
+                <tr>
+                    <td>{{ team.rank }}</td>
+                    <td>{{ team.team_name }}</td>
+                    <td>{{ team.games_played }}</td>
+                    <td>{{ team.points }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팀 순위</title>
+</head>
+<body>
+    <h1>축구 팀 순위</h1>
+    <table border="1">
+        <tr>
+            <th>순위</th>
+            <th>팀</th>
+            <th>경기수</th>
+            <th>승점</th>
+        </tr>
+        {% for team in teams1 %}
+        <tr>
+            <td>{{ team.rank }}</td>
+            <td>{{ team.team_name }}</td>
+            <td>{{ team.games_played }}</td>
+            <td>{{ team.points }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
