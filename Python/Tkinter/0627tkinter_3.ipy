@@ -1,0 +1,12 @@
+import tkinter
+
+window = tkinter.Tk()
+
+window.title("SUNGTAK")
+window.geometry("640x400+100+100")
+window.resizable(0,0)
+
+label = tkinter.Label(window, text = "안녕하세요.", width=10, height=5, fg="green", relief="ridge", borderwidth=5)
+label.pack()
+
+window.mainloop()

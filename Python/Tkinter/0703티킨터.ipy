@@ -1,0 +1,101 @@
+import tensorflow as tf
+from tensorflow.keras.models import load_model
+import numpy as np
+import os
+
+# Google Colab 사용 시 드라이브 마운트
+from google.colab import drive
+drive.mount('/content/drive')
+
+# 모델 파일 경로
+model_path = '/content/drive/MyDrive/cricket-football-baseball.h5'
+
+# 모델 로드
+if os.path.exists(model_path):
+    model = load_model(model_path)
+else:
+    raise FileNotFoundError(f"Model file not found at {model_path}")
+
+# 클래스 이름
+class_names = ['cricket', 'football', 'baseball']
+import tkinter as tk
+from tkinter import filedialog
+from PIL import Image, ImageTk, ImageFilter
+
+class ImageFilterApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Image Filter and Classification Application")
+
+        self.image = None
+
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.load_btn = tk.Button(self.root, text="Load Image", command=self.load_image)
+        self.load_btn.pack()
+
+        self.image_label_original = tk.Label(self.root, text="Original")
+        self.image_label_original.pack(side=tk.LEFT)
+        self.image_canvas_original = tk.Label(self.root)
+        self.image_canvas_original.pack(side=tk.LEFT)
+
+        self.image_label_blur = tk.Label(self.root, text="Blur")
+        self.image_label_blur.pack(side=tk.LEFT)
+        self.image_canvas_blur = tk.Label(self.root)
+        self.image_canvas_blur.pack(side=tk.LEFT)
+
+        self.image_label_sharpen = tk.Label(self.root, text="Sharpen")
+        self.image_label_sharpen.pack(side=tk.LEFT)
+        self.image_canvas_sharpen = tk.Label(self.root)
+        self.image_canvas_sharpen.pack(side=tk.LEFT)
+
+        self.image_label_gray = tk.Label(self.root, text="Grayscale")
+        self.image_label_gray.pack(side=tk.LEFT)
+        self.image_canvas_gray = tk.Label(self.root)
+        self.image_canvas_gray.pack(side=tk.LEFT)
+
+        self.classification_label = tk.Label(self.root, text="Class: ")
+        self.classification_label.pack(side=tk.LEFT)
+
+    def load_image(self):
+        file_path = filedialog.askopenfilename()
+        if file_path:
+            self.image = Image.open(file_path)
+            self.display_images(self.image)
+            self.classify_image(file_path)
+
+    def display_images(self, img):
+        img_tk = ImageTk.PhotoImage(img)
+        self.image_canvas_original.configure(image=img_tk)
+        self.image_canvas_original.image = img_tk
+
+        img_blur = img.filter(ImageFilter.BLUR)
+        img_blur_tk = ImageTk.PhotoImage(img_blur)
+        self.image_canvas_blur.configure(image=img_blur_tk)
+        self.image_canvas_blur.image = img_blur_tk
+
+        img_sharpen = img.filter(ImageFilter.SHARPEN)
+        img_sharpen_tk = ImageTk.PhotoImage(img_sharpen)
+        self.image_canvas_sharpen.configure(image=img_sharpen_tk)
+        self.image_canvas_sharpen.image = img_sharpen_tk
+
+        img_gray = img.convert("L")
+        img_gray_tk = ImageTk.PhotoImage(img_gray)
+        self.image_canvas_gray.configure(image=img_gray_tk)
+        self.image_canvas_gray.image = img_gray_tk
+
+    def classify_image(self, file_path):
+        img = Image.open(file_path)
+        img = img.resize((300, 300))  # 모델에 맞게 이미지 크기 조정
+        img_array = np.array(img) / 255.0
+        img_array = np.expand_dims(img_array, axis=0)
+
+        predictions = model.predict(img_array)
+        predicted_class = class_names[np.argmax(predictions)]
+        self.classification_label.configure(text=f"Class: {predicted_class}")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = ImageFilterApp(root)
+    root.mainloop()

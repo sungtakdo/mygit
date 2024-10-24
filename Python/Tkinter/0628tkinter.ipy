@@ -1,0 +1,59 @@
+import tkinter as tk
+from tkinter import filedialog
+from PIL import Image, ImageTk, ImageFilter
+
+class ImageFilterApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Sungtak 이미지 필터")
+
+        
+        self.image = None
+
+        
+        self.create_widgets()
+
+    def create_widgets(self):
+        
+        self.load_btn = tk.Button(self.root, text="Load Image", command=self.load_image)
+        self.load_btn.pack()
+
+        
+        self.image_label = tk.Label(self.root)
+        self.image_label.pack()
+
+        
+        self.blur_btn = tk.Button(self.root, text="Blur", command=lambda: self.apply_filter(ImageFilter.BLUR))
+        self.blur_btn.pack(side=tk.LEFT)
+
+        self.sharpen_btn = tk.Button(self.root, text="Sharpen", command=lambda: self.apply_filter(ImageFilter.SHARPEN))
+        self.sharpen_btn.pack(side=tk.LEFT)
+
+        self.gray_btn = tk.Button(self.root, text="Grayscale", command=self.apply_grayscale)
+        self.gray_btn.pack(side=tk.LEFT)
+
+    def load_image(self):
+        file_path = filedialog.askopenfilename()
+        if file_path:
+            self.image = Image.open(file_path)
+            self.display_image(self.image)
+
+    def display_image(self, img):
+        img_tk = ImageTk.PhotoImage(img)
+        self.image_label.configure(image=img_tk)
+        self.image_label.image = img_tk
+
+    def apply_filter(self, filter):
+        if self.image:
+            filtered_image = self.image.filter(filter)
+            self.display_image(filtered_image)
+
+    def apply_grayscale(self):
+        if self.image:
+            grayscale_image = self.image.convert("L")
+            self.display_image(grayscale_image)
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = ImageFilterApp(root)
+    root.mainloop()

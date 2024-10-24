@@ -1,0 +1,75 @@
+import tkinter as tk
+from tkinter import filedialog
+from PIL import Image, ImageTk, ImageFilter
+
+class ImageFilterApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("SungTak - Image filter")
+
+        self.image = None
+
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.load_btn = tk.Button(self.root, text="Load Image", command=self.load_image)
+        self.load_btn.pack()
+
+        self.frame_original = tk.Frame(self.root)
+        self.frame_original.pack(side=tk.LEFT)
+        self.label_original = tk.Label(self.frame_original, text="Original")
+        self.label_original.pack()
+        self.image_label_original = tk.Label(self.frame_original)
+        self.image_label_original.pack()
+
+        self.frame_blur = tk.Frame(self.root)
+        self.frame_blur.pack(side=tk.LEFT)
+        self.label_blur = tk.Label(self.frame_blur, text="Blur")
+        self.label_blur.pack()
+        self.image_label_blur = tk.Label(self.frame_blur)
+        self.image_label_blur.pack()
+
+        self.frame_sharpen = tk.Frame(self.root)
+        self.frame_sharpen.pack(side=tk.LEFT)
+        self.label_sharpen = tk.Label(self.frame_sharpen, text="Sharpen")
+        self.label_sharpen.pack()
+        self.image_label_sharpen = tk.Label(self.frame_sharpen)
+        self.image_label_sharpen.pack()
+
+        self.frame_gray = tk.Frame(self.root)
+        self.frame_gray.pack(side=tk.LEFT)
+        self.label_gray = tk.Label(self.frame_gray, text="Grayscale")
+        self.label_gray.pack()
+        self.image_label_gray = tk.Label(self.frame_gray)
+        self.image_label_gray.pack()
+
+    def load_image(self):
+        file_path = filedialog.askopenfilename()
+        if file_path:
+            self.image = Image.open(file_path)
+            self.display_images(self.image)
+
+    def display_images(self, img):
+        img_tk = ImageTk.PhotoImage(img)
+        self.image_label_original.configure(image=img_tk)
+        self.image_label_original.image = img_tk
+
+        img_blur = img.filter(ImageFilter.BLUR)
+        img_blur_tk = ImageTk.PhotoImage(img_blur)
+        self.image_label_blur.configure(image=img_blur_tk)
+        self.image_label_blur.image = img_blur_tk
+
+        img_sharpen = img.filter(ImageFilter.SHARPEN)
+        img_sharpen_tk = ImageTk.PhotoImage(img_sharpen)
+        self.image_label_sharpen.configure(image=img_sharpen_tk)
+        self.image_label_sharpen.image = img_sharpen_tk
+
+        img_gray = img.convert("L")
+        img_gray_tk = ImageTk.PhotoImage(img_gray)
+        self.image_label_gray.configure(image=img_gray_tk)
+        self.image_label_gray.image = img_gray_tk
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = ImageFilterApp(root)
+    root.mainloop()

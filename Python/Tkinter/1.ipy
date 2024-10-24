@@ -1,0 +1,94 @@
+import tkinter as tk
+from tkinter import filedialog, Label, Button, Frame
+from PIL import Image, ImageTk, ImageFilter, ImageOps
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras.models import load_model
+
+# 딥러닝 모델 로드
+model = load_model('trained_model.h5')
+
+# 클래스 인덱스
+class_indices = {
+    "0": "baseball",
+    "1": "cricket",
+    "2": "football",
+    # 추가적인 클래스들...
+}
+
+# 이미지 분류 함수
+def classify_image(image_path):
+    img = Image.open(image_path)
+    img = img.resize((224, 224))
+    img_array = np.array(img) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
+    predictions = model.predict(img_array)
+    class_idx = np.argmax(predictions)
+    class_name = class_indices[str(class_idx)]
+    return class_name
+
+# 이미지 필터 함수
+def apply_filter(image, filter_type):
+    if filter_type == "BLUR":
+        return image.filter(ImageFilter.BLUR)
+    elif filter_type == "SHARPEN":
+        return image.filter(ImageFilter.SHARPEN)
+    elif filter_type == "GRAYSCALE":
+        return ImageOps.grayscale(image)
+    return image
+
+# 이미지 열기 및 분류
+def open_and_classify_image():
+    file_path = filedialog.askopenfilename()
+    if file_path:
+        class_name = classify_image(file_path)
+        class_label.config(text=f'Class: {class_name}')
+        original_image = Image.open(file_path)
+        display_image(original_image, original_label)
+        global img
+        img = original_image
+
+# 이미지 표시
+def display_image(image, label):
+    img_tk = ImageTk.PhotoImage(image)
+    label.config(image=img_tk)
+    label.image = img_tk
+
+# 필터 적용 버튼 클릭 핸들러
+def apply_filter_button(filter_type):
+    global img
+    filtered_image = apply_filter(img, filter_type)
+    display_image(filtered_image, filtered_label)
+
+# Tkinter 설정
+root = tk.Tk()
+root.title("Sungtak - Image filter")
+
+# 위젯 프레임 생성
+frame = Frame(root)
+frame.pack()
+
+# 위젯 배치
+class_label = Label(frame, text="Class: None")
+class_label.pack(side=tk.LEFT)
+
+original_label = Label(frame)
+original_label.pack(side=tk.LEFT)
+
+filtered_label = Label(frame)
+filtered_label.pack(side=tk.LEFT)
+
+open_button = Button(frame, text="Open Image", command=open_and_classify_image)
+open_button.pack(side=tk.LEFT)
+
+# 필터 버튼들
+blur_button = Button(frame, text="Blur", command=lambda: apply_filter_button("BLUR"))
+blur_button.pack(side=tk.LEFT)
+
+sharpen_button = Button(frame, text="Sharpen", command=lambda: apply_filter_button("SHARPEN"))
+sharpen_button.pack(side=tk.LEFT)
+
+grayscale_button = Button(frame, text="Grayscale", command=lambda: apply_filter_button("GRAYSCALE"))
+grayscale_button.pack(side=tk.LEFT)
+
+root.mainloop()
