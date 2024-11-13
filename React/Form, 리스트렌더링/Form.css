@@ -1,0 +1,91 @@
+/* 전체 컨테이너 스타일 */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(145deg, #e0eafc, #cfdef3);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* 제목 스타일 */
+.container h3 {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 폼 그룹 스타일 */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* 라벨과 입력 필드 스타일 */
+.form-group label {
+    display: block;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s;
+}
+
+.form-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* 인풋 필드 포커스 스타일 */
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #6ca0dc;
+    outline: none;
+}
+
+/* 제출 버튼 스타일 */
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #6ca0dc;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn:hover {
+    background-color: #5a8fc1;
+}
+
+/* 결과 표시 스타일 */
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f7fbff;
+    border: 1px solid #d8e3ef;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.result h4 {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.result p {
+    color: #555;
+    margin: 5px 0;
+}

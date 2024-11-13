@@ -1,0 +1,36 @@
+/* 이미지 리스트의 전체 레이아웃 스타일 */
+.image-list {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: center; /* 중앙 정렬 */
+    padding: 40px;
+    background: linear-gradient(145deg, #d4fcf9, #e6e9fa); /* 부드러운 파스텔톤 그라데이션 */
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 개별 이미지 스타일 */
+  .image-list img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+    border: 2px solid transparent;
+    margin-bottom: 20px; /* 이미지 사이 간격 */
+  }
+  
+  /* 마지막 이미지 아래 여백 제거 */
+  .image-list img:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* 이미지에 마우스를 올렸을 때 부드러운 효과 */
+  .image-list img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1) saturate(1.15);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+  }
+  
